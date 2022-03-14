@@ -1,14 +1,12 @@
 package com.skypro.shop.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.skypro.shop.service.CartService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("order")
+@RequestMapping("/order")
 public class CartController {
 
     private final CartService cartService;
@@ -18,7 +16,7 @@ public class CartController {
     }
 
     @GetMapping("/addItems")
-    public List<Integer> addItems(List<Integer> idList) {
+    public List<Integer> addItems(@RequestParam List<Integer> idList) {
         return cartService.addItems(idList);
     }
 
